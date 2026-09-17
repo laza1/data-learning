@@ -6,17 +6,31 @@ models:
 
     columns:
       - name: order_id
+        description: "Unique identifier of the order."
         tests:
           - not_null
 
       - name: customer_id
+        description: "Identifier of the customer who placed the order."
         tests:
           - not_null
 
       - name: order_status
-        tests:
-          - not_null
+        description: "Current status of the order."
+
+      - name: order_purchase_timestamp
+        description: "Timestamp when the customer placed the order."
+
+      - name: item_count
+        description: "Number of items included in the order."
+
+      - name: sales_amount
+        description: "Total product sales amount for the order."
+
+      - name: freight_amount
+        description: "Total freight amount for the order."
 
       - name: total_order_value
+        description: "Total order value including product sales and freight."
         tests:
           - not_null

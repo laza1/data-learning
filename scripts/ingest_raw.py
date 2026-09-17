@@ -4,10 +4,12 @@ from pathlib import Path
 from config.database import get_connection
 
 
-DATA_DIR = Path("data/raw")
+#DATA_DIR = Path("data/raw")
+DATA_DIR = Path(__file__).resolve().parents[1] / "data" / "raw"
 
 
-def ingest(table_name: str, csv_file: str):
+#def ingest(table_name: str, csv_file: str):
+def ingest(table_name: str, csv_file: str, connection_factory=get_connection):
     csv_path = DATA_DIR / csv_file
 
     if not csv_path.exists():
@@ -16,7 +18,7 @@ def ingest(table_name: str, csv_file: str):
 
     print(f"Ingesting {csv_path} → raw.{table_name}")
 
-    with get_connection() as conn:
+    with connection_factory() as conn:
 
         with conn.cursor() as cur:
 
@@ -42,7 +44,7 @@ def ingest(table_name: str, csv_file: str):
         conn.commit()
 
     # Validate the number of rows loaded
-    with get_connection() as conn:
+    with connection_factory() as conn:
 
         with conn.cursor() as cur:
             cur.execute(f"SELECT COUNT(*) FROM raw.{table_name}")
