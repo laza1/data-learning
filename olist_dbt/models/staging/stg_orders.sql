@@ -1,0 +1,15 @@
+{{ config(materialized='view') }}
+
+SELECT
+    order_id,
+    customer_id,
+    order_status,
+    order_purchase_timestamp,
+    order_approved_at,
+    order_delivered_carrier_date,
+    order_delivered_customer_date,
+    order_estimated_delivery_date,
+    missing_delivery_date_flag,
+    canceled_with_delivery_date_flag,
+    late_delivery_flag
+FROM {{ source('warehouse', 'dim_orders') }}

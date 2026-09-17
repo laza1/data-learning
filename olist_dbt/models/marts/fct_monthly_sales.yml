@@ -1,0 +1,26 @@
+version: 2
+
+models:
+  - name: fct_monthly_sales
+    description: "Monthly sales fact table. One row per month."
+
+    columns:
+      - name: month
+        tests:
+          - not_null
+
+      - name: order_count
+        tests:
+          - not_null
+
+      - name: sales_amount
+        tests:
+          - not_null
+
+      - name: total_sales_value
+        tests:
+          - not_null
+
+      - name: average_order_value
+        tests:
+          - not_null

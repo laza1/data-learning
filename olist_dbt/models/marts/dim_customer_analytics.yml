@@ -1,0 +1,22 @@
+version: 2
+
+models:
+  - name: dim_customer_analytics
+    description: "Customer-level analytics dimension. One row per customer."
+
+    columns:
+      - name: customer_id
+        tests:
+          - not_null
+
+      - name: customer_unique_id
+        tests:
+          - not_null
+
+      - name: order_count
+        tests:
+          - not_null
+
+      - name: total_spend
+        tests:
+          - not_null

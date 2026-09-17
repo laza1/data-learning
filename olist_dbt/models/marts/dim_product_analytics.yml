@@ -1,0 +1,18 @@
+version: 2
+
+models:
+  - name: dim_product_analytics
+    description: "Product-level analytics dimension. One row per product."
+
+    columns:
+      - name: product_id
+        tests:
+          - not_null
+
+      - name: item_count
+        tests:
+          - not_null
+
+      - name: total_sales_value
+        tests:
+          - not_null

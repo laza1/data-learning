@@ -1,0 +1,31 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+.venv-*/
+
+# Environment / secrets
+.env
+.env.*
+
+# Data
+data/raw/
+data/staging/
+data/processed/
+
+# dbt generated files
+olist_dbt/target/
+olist_dbt/logs/
+olist_dbt/dbt_packages/
+olist_dbt/packages.yml
+
+# Logs
+logs/
+*.log
+
+# Jupyter
+.ipynb_checkpoints/
+
+# OS
+.DS_Store
+Thumbs.db

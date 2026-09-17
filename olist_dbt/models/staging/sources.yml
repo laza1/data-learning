@@ -1,0 +1,32 @@
+version: 2
+
+sources:
+  - name: warehouse
+    description: "Validated warehouse layer built from the Olist e-commerce dataset."
+
+    schema: warehouse
+
+    tables:
+      - name: dim_orders
+        description: "Order dimension. One row per order."
+
+      - name: dim_customers
+        description: "Customer dimension. One row per customer record."
+
+      - name: dim_products
+        description: "Product dimension. One row per product."
+
+      - name: dim_sellers
+        description: "Seller dimension. One row per seller."
+
+      - name: dim_category
+        description: "Product category dimension with English category translation."
+
+      - name: fact_order_items
+        description: "Order-item fact table. One row per order item."
+
+      - name: fact_payments
+        description: "Payment fact table. One row per payment sequence within an order."
+
+      - name: fact_reviews
+        description: "Review fact table containing customer review information."
