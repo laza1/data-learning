@@ -1,7 +1,7 @@
 import sys
 from pathlib import Path
 
-import psycopg
+from config.database import get_connection
 
 
 DATA_DIR = Path("data/raw")
@@ -16,13 +16,7 @@ def ingest(table_name: str, csv_file: str):
 
     print(f"Ingesting {csv_path} → raw.{table_name}")
 
-    with psycopg.connect(
-        host="localhost",
-        port=5432,
-        dbname="olist_dw",
-        user="dev",
-        password="dev",
-    ) as conn:
+    with get_connection() as conn:
 
         with conn.cursor() as cur:
 
@@ -48,13 +42,7 @@ def ingest(table_name: str, csv_file: str):
         conn.commit()
 
     # Validate the number of rows loaded
-    with psycopg.connect(
-        host="localhost",
-        port=5432,
-        dbname="olist_dw",
-        user="dev",
-        password="dev",
-    ) as conn:
+    with get_connection() as conn:
 
         with conn.cursor() as cur:
             cur.execute(f"SELECT COUNT(*) FROM raw.{table_name}")

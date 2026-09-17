@@ -1,7 +1,7 @@
 import csv
 from pathlib import Path
 
-import psycopg
+from config.database import get_connection
 
 
 CSV_FILE = Path("data/raw/olist_orders_dataset.csv")
@@ -21,13 +21,7 @@ CREATE TABLE IF NOT EXISTS raw.orders (
 """
 
 
-with psycopg.connect(
-    host="localhost",
-    port=5432,
-    dbname="olist_dw",
-    user="dev",
-    password="dev",
-) as conn:
+with get_connection() as conn:
 
     with conn.cursor() as cur:
         cur.execute(CREATE_TABLE_SQL)
