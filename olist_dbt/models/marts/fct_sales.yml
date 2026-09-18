@@ -20,3 +20,7 @@ models:
       - name: seller_id
         tests:
           - not_null
+
+      - name: total_item_value
+        tests:
+          - not_null
